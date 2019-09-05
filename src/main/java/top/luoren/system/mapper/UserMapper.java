@@ -1,8 +1,7 @@
 package top.luoren.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.springframework.stereotype.Component;
-import top.luoren.system.bean.User;
+import top.luoren.system.entity.User;
 
 /**
  * @author luoren

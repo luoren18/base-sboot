@@ -19,11 +19,12 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class BaseEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
     /**
      * ID
      */
-    @TableId(type = IdType.ID_WORKER_STR)
-    private String id;
+    @TableId(type = IdType.AUTO)
+    private Long id;
     /**
      * 创建人
      */

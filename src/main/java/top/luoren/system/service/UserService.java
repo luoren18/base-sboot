@@ -1,9 +1,8 @@
 package top.luoren.system.service;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.luoren.common.util.PageUtils;
-import top.luoren.system.bean.User;
+import top.luoren.system.entity.User;
 
 import java.util.Map;
 

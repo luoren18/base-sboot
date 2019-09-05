@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import top.luoren.common.util.PageUtils;
-import top.luoren.system.bean.User;
+import top.luoren.system.entity.User;
 import top.luoren.system.mapper.UserMapper;
 import top.luoren.system.service.UserService;
 

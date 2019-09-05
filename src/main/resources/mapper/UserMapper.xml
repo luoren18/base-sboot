@@ -3,11 +3,12 @@
 
 <mapper namespace="top.luoren.system.mapper.UserMapper">
 
-    <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="top.luoren.system.bean.User" id="userMap">
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="top.luoren.system.entity.User" id="userMap">
         <result property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
+        <result property="salt" column="salt"/>
         <result property="avatar" column="avatar"/>
         <result property="sex" column="sex"/>
         <result property="email" column="email"/>

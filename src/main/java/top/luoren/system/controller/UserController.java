@@ -5,7 +5,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 import top.luoren.common.api.vo.Result;
 import top.luoren.common.util.PageUtils;
-import top.luoren.system.bean.User;
+import top.luoren.system.entity.User;
 import top.luoren.system.service.UserService;
 
 import java.util.Arrays;
