@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-import top.luoren.common.system.base.entity.BaseEntity;
+import top.luoren.common.base.entity.BaseEntity;
 
 /**
  * @author luoren

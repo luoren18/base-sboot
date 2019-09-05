@@ -1,4 +1,4 @@
-package top.luoren.common.system.base.entity;
+package top.luoren.common.base.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

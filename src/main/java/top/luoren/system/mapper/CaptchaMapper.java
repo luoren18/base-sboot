@@ -8,7 +8,6 @@ import top.luoren.system.entity.Captcha;
  * 系统验证码
  * 
  * @author luoren
- * @email luoren96@gmail.com
  * @date 2019-09-05 11:37:43
  */
 @Mapper

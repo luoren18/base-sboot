@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import lombok.Data;
 
@@ -30,6 +31,6 @@ public class Captcha implements Serializable {
 	/**
 	 * 过期时间
 	 */
-	private Date expireTime;
+	private LocalDateTime expireTime;
 
 }

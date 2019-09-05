@@ -3,7 +3,7 @@ package top.luoren.system.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import top.luoren.common.system.base.entity.BaseEntity;
+import top.luoren.common.base.entity.BaseEntity;
 
 /**
  * 菜单管理
