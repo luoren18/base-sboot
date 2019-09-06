@@ -32,7 +32,7 @@ public class UserController {
     @RequiresPermissions("system:user:list")
     public Result list(@RequestParam Map<String, Object> params) {
         PageUtils page = userService.queryPage(params);
-        return Result.ok(page);
+        return Result.ok().data(page);
     }
 
 
@@ -44,7 +44,7 @@ public class UserController {
     public Result info(@PathVariable("id") String id) {
         User user = userService.getById(id);
 
-        return Result.ok(user);
+        return Result.ok().data(user);
     }
 
     /**

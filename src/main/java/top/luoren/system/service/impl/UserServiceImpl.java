@@ -11,6 +11,7 @@ import top.luoren.system.mapper.UserMapper;
 import top.luoren.system.service.UserService;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author luoren
@@ -23,5 +24,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<User> page = this.page(new Page<>(), new QueryWrapper<>());
         return new PageUtils(page);
+    }
+
+    @Override
+    public User getUser(String username) {
+        return baseMapper.queryByUserName(username);
+    }
+
+    @Override
+    public Set<String> getUserRolesSet(String username) {
+        return baseMapper.queryRoles(username);
+    }
+
+    @Override
+    public Set<String> getUserPermissionsSet(String username) {
+        return baseMapper.queryPermissions(username);
     }
 }

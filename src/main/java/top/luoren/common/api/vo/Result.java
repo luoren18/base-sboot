@@ -75,13 +75,9 @@ public class Result implements Serializable {
         return r;
     }
 
-    public static Result ok(Object data) {
-        Result r = new Result();
-        r.status = 1;
-        r.code = OK_200;
-        r.message = "成功";
-        r.resultBody = data;
-        return r;
+    public Result data(Object data) {
+        this.resultBody = data;
+        return this;
     }
 
     public static Result error(String message) {

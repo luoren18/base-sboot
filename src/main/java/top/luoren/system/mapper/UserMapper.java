@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import top.luoren.system.entity.User;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author luoren
@@ -13,10 +14,10 @@ public interface UserMapper extends BaseMapper<User> {
     /**
      * 查询用户的所有权限
      *
-     * @param userId 用户ID
-     * @return list
+     * @param username 用户名
+     * @return set
      */
-    List<String> queryAllPerms(Long userId);
+    Set<String> queryPermissions(String username);
 
     /**
      * 查询用户的所有菜单ID
@@ -33,4 +34,14 @@ public interface UserMapper extends BaseMapper<User> {
      * @return User
      */
     User queryByUserName(String username);
+
+    /**
+     * 根据用户名查询角色名
+     *
+     * @param username 用户名
+     * @return set
+     */
+    Set<String> queryRoles(String username);
+
+
 }

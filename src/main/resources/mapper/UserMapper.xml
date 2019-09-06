@@ -21,19 +21,29 @@
     </resultMap>
 
     <!-- 查询用户的所有权限 -->
-    <select id="queryAllPerms" resultType="string">
-		select m.perms from sys_user_role ur
-			LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
-			LEFT JOIN sys_menu m on rm.menu_id = m.menu_id
-		where ur.user_id = #{userId}
+    <select id="queryPermissions" resultType="string">
+		SELECT DISTINCT sm.perms
+        FROM sys_user su
+        LEFT JOIN sys_user_role sur ON su.id = sur.user_id
+        LEFT JOIN sys_role_menu srm ON sur.role_id = srm.role_id
+        LEFT JOIN sys_menu sm ON srm.menu_id = sm.id
+        WHERE su.username = #{username}
 	</select>
 
     <!-- 查询用户的所有菜单ID -->
     <select id="queryAllMenuId" resultType="long">
-		select distinct rm.menu_id from sys_user_role ur
+		select distinct rm.id from sys_user_role ur
 			LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id
 		where ur.user_id = #{userId}
 	</select>
+
+    <select id="queryRoles" resultType="string">
+        SELECT DISTINCT sr.role_name
+        FROM sys_user su
+        LEFT JOIN sys_user_role sur on su.id=sur.user_id
+        LEFT JOIN sys_role sr ON sur.role_id = sr.id
+        WHERE su.username=#{username}
+    </select>
 
     <select id="queryByUserName" resultType="top.luoren.system.entity.User">
 		select * from sys_user where username = #{username}
