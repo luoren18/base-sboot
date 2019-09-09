@@ -12,6 +12,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,12 +24,6 @@ import java.util.Map;
 @Configuration
 public class ShiroRedisConfig {
 
-    @Bean
-    public FilterRegistrationBean registration(JwtFilter filter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean(filter);
-        registration.setEnabled(false);
-        return registration;
-    }
 
 
     @Bean("sessionManager")
@@ -50,14 +46,18 @@ public class ShiroRedisConfig {
     public ShiroFilterFactoryBean factory(SecurityManager securityManager) {
         ShiroFilterFactoryBean factory = new ShiroFilterFactoryBean();
         factory.setSecurityManager(securityManager);
+        Map<String, Filter> filterMap = new HashMap<>(16);
+        filterMap.put("jwt", new JwtFilter());
+        factory.setFilters(filterMap);
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/", "anon");
-        filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/logout", "anon");
-        filterChainDefinitionMap.put("/error", "anon");
-        filterChainDefinitionMap.put("/**", "authc");
-//        factory.set
+//        filterChainDefinitionMap.put("/", "anon");
+//        filterChainDefinitionMap.put("/static/**", "anon");
+//        filterChainDefinitionMap.put("/login", "anon");
+//        filterChainDefinitionMap.put("/logout", "anon");
+//        filterChainDefinitionMap.put("/error", "anon");
+//        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "jwt");
+        factory.setFilterChainDefinitionMap(filterChainDefinitionMap);
         factory.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return factory;
     }

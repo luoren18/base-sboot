@@ -2,6 +2,7 @@ package top.luoren.system.controller;
 
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 import top.luoren.common.api.vo.Result;
 import top.luoren.common.util.PageUtils;
@@ -29,7 +30,7 @@ public class UserController {
      * 列表
      */
     @RequestMapping("/list")
-//    @RequiresPermissions("system:user:list")
+    @RequiresPermissions("system:user:list")
     public Result list(@RequestParam Map<String, Object> params) {
         PageUtils page = userService.queryPage(params);
         return Result.ok().data(page);
