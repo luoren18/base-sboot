@@ -16,7 +16,7 @@ import java.util.Map;
  * @date 2019/9/4 15:10
  */
 @RestController
-@RequestMapping("system/user")
+@RequestMapping("/system/user")
 public class UserController {
 
     private final UserService userService;
@@ -29,7 +29,7 @@ public class UserController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("system:user:list")
+//    @RequiresPermissions("system:user:list")
     public Result list(@RequestParam Map<String, Object> params) {
         PageUtils page = userService.queryPage(params);
         return Result.ok().data(page);
