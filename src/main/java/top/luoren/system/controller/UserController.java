@@ -2,7 +2,6 @@ package top.luoren.system.controller;
 
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;
 import top.luoren.common.api.vo.Result;
 import top.luoren.common.util.PageUtils;
@@ -80,6 +79,8 @@ public class UserController {
 
         return Result.ok();
     }
+
+
 
 }
 

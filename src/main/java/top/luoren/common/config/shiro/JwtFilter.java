@@ -32,7 +32,6 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
         if (!isLoginAttempt(request, response)) {
             return true;
         }
-
         try {
             return executeLogin(request, response);
         } catch (Exception e) {
@@ -70,18 +69,16 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
         return true;
     }
 
+
     /**
-     * 生成token
-     *
-     * @param servletRequest  request
-     * @param servletResponse response
-     * @return
+     * 这里我们详细说明下为什么重写
+     * 可以对比父类方法，只是将executeLogin方法调用去除了
+     * 如果没有去除将会循环调用doGetAuthenticationInfo方法
      */
 //    @Override
-//    protected AuthenticationToken createToken(ServletRequest servletRequest, ServletResponse servletResponse) {
-//        HttpServletRequest request = (HttpServletRequest) servletRequest;
-//        String token = request.getHeader("Token");
-//        return new JwtToken(token);
+//    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+//        this.sendChallenge(request, response);
+//        return false;
 //    }
 
 

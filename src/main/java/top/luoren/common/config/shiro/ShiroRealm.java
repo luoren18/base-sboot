@@ -43,7 +43,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        String username = JwtUtil.getUsername(principalCollection.getPrimaryPrincipal().toString());
+        String username = JwtUtil.getUsernameFromToken(principalCollection.getPrimaryPrincipal().toString());
         Set<String> userRolesSet = userService.getUserRolesSet(username);
         Set<String> userPermissionsSet = userService.getUserPermissionsSet(username);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
@@ -62,17 +62,18 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String token = (String) authenticationToken.getCredentials();
-        String username = JwtUtil.getUsername(token);
+        String username = JwtUtil.getUsernameFromToken(token);
         if (username == null) {
             throw new AuthenticationException("token invalid");
         }
+
         User user = userService.getUser(username);
         if (user == null) {
             throw new AuthenticationException("User didn't existed!");
         }
-        boolean flag = JwtUtil.verify(token, username, user.getPassword());
+        boolean flag = JwtUtil.validateToken(token, username);
         if (!flag) {
-            throw new AuthenticationException("Username or password error");
+            throw new AuthenticationException("");
         }
         return new SimpleAuthenticationInfo(token, token, "ShiroRealm");
     }
